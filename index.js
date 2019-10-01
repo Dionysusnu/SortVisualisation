@@ -29,6 +29,13 @@ class CustomArray extends Array {
 		super.splice(args[0], args[1], ...args.slice(2));
 		redraw(this);
 	}
+
+	swap(a, b) {
+		const obja = this[a];
+		const objb = this[b];
+		this[a] = objb;
+		this[b] = obja;
+	}
 }
 
 import { QuickSort } from './sorts/QuickSort.js';
