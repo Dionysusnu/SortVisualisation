@@ -35,6 +35,7 @@ class CustomArray extends Array {
 		const objb = this[b];
 		this[a] = objb;
 		this[b] = obja;
+		redraw(this);
 	}
 }
 
