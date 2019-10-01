@@ -1,7 +1,7 @@
 /* global sleep */
 async function QuickSort(array, comparison, starti, numElements) {
 	if ((numElements) > 1) {
-		await sleep(20);
+		await sleep(1);
 		const partitioni = Math.round(starti + Math.random() * (numElements - 1));
 		const partition = array[partitioni];
 		const before = [];
