@@ -8,10 +8,9 @@ async function MergeSort(array, comparison, starti, numElements) {
 		const Rarray = array.slice(starti + half, starti + numElements);
 		let insertPos = starti;
 		while (Larray.length && Rarray.length) {
-			await sleep(1);
 			const Lelement = Larray.shift();
 			const Relement = Rarray.shift();
-			if (comparison(Lelement, Relement)) {
+			if (await comparison(Lelement, Relement)) {
 				array.splice(insertPos, 1, Relement);
 				Larray.unshift(Lelement);
 			} else {

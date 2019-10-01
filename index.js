@@ -1,3 +1,4 @@
+/* global sleep */
 const canvas = document.getElementById('MAIN_CANVAS');
 canvas.width = window.innerWidth * 0.9;
 canvas.height = window.innerHeight * 0.9;
@@ -39,11 +40,13 @@ import { QuickSort } from './sorts/QuickSort.js';
 import { InsertionSort } from './sorts/InsertionSort.js';
 import { MergeSort } from './sorts/MergeSort.js';
 import { BubbleSort } from './sorts/BubbleSort.js';
+import { SelectionSort } from './sorts/SelectionSort.js';
 const Algorithms = new Map([
 	['QuickSort', [QuickSort, 1000]],
 	['InsertionSort', [InsertionSort, 200]],
-	['MergeSort', [MergeSort, 400]],
+	['MergeSort', [MergeSort, 500]],
 	['BubbleSort', [BubbleSort, 100]],
+	['SelectionSort', [SelectionSort, 100]],
 ]);
 
 const select = document.getElementById('ALGORITHM_SELECT');
@@ -73,8 +76,9 @@ async function play() {
 	oscillator.type = 'sine';
 	oscillator.connect(audioCtx.destination);
 	oscillator.start();
-	await data[0](array, (a, b) => {
+	await data[0](array, async (a, b) => {
 		playNote(a + 300, oscillator);
+		await sleep(1);
 		return a >= b;
 	}, 0, array.length);
 	oscillator.stop();
