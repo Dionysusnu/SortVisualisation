@@ -41,12 +41,14 @@ import { InsertionSort } from './sorts/InsertionSort.js';
 import { MergeSort } from './sorts/MergeSort.js';
 import { BubbleSort } from './sorts/BubbleSort.js';
 import { SelectionSort } from './sorts/SelectionSort.js';
+import { HeapSort } from './sorts/HeapSort.js';
 const Algorithms = new Map([
 	['QuickSort', [QuickSort, 500]],
 	['InsertionSort', [InsertionSort, 200]],
 	['MergeSort', [MergeSort, 500]],
 	['BubbleSort', [BubbleSort, 100]],
 	['SelectionSort', [SelectionSort, 100]],
+	['HeapSort', [HeapSort, 400]],
 ]);
 
 const select = document.getElementById('ALGORITHM_SELECT');
