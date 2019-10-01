@@ -3,23 +3,19 @@ canvas.width = window.innerWidth * 0.9;
 canvas.height = window.innerHeight * 0.9;
 const context = canvas.getContext('2d');
 
-const NUM_ELEMENTS = canvas.width * 0.5;
-const RANDOM_NUMS = true;
-
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 function playNote(frequency, oscillator) {
 	oscillator.frequency.value = frequency;
 }
 
-function drawBar(i, height) {
-	const barWidth = canvas.width / NUM_ELEMENTS;
-	context.fillRect(i * barWidth, canvas.height - height, barWidth, height);
+function drawBar(i, height, width) {
+	context.fillRect(i * width, canvas.height - height, width, height);
 }
 
 function redraw(array) {
 	context.clearRect(0, 0, canvas.width, canvas.height);
 	for (let i = 0; i < array.length; i++) {
-		drawBar(i, array[i]);
+		drawBar(i, array[i], canvas.width / array.length);
 	}
 }
 
@@ -42,10 +38,12 @@ class CustomArray extends Array {
 import { QuickSort } from './sorts/QuickSort.js';
 import { InsertionSort } from './sorts/InsertionSort.js';
 import { MergeSort } from './sorts/MergeSort.js';
+import { BubbleSort } from './sorts/BubbleSort.js';
 const Algorithms = new Map([
-	['QuickSort', QuickSort],
-	['InsertionSort', InsertionSort],
-	['MergeSort', MergeSort],
+	['QuickSort', [QuickSort, 1000]],
+	['InsertionSort', [InsertionSort, 200]],
+	['MergeSort', [MergeSort, 400]],
+	['BubbleSort', [BubbleSort, 100]],
 ]);
 
 const select = document.getElementById('ALGORITHM_SELECT');
@@ -59,24 +57,24 @@ for (const [name] of Algorithms) {
 
 async function play() {
 	const algorithm = select.options[select.selectedIndex].value;
+	const data = Algorithms.get(algorithm);
 	const array = new CustomArray();
-	if (RANDOM_NUMS) {
-		for (let i = 0; i < NUM_ELEMENTS; i++) {
-			array.push(Math.round(Math.random() * canvas.height));
-		}
-	} else {
+	for (let i = 0; i < data[1]; i++) {
+		array.push(Math.round(Math.random() * canvas.height));
+	}
+	/*
 		for (let i = NUM_ELEMENTS; i > 0; i -= 2) {
 			array.push(Math.round(i * canvas.height / NUM_ELEMENTS));
 			array.push(Math.round(i * canvas.height / NUM_ELEMENTS));
 		}
-	}
+	*/
 	redraw(array);
 	const oscillator = audioCtx.createOscillator();
 	oscillator.type = 'sine';
 	oscillator.connect(audioCtx.destination);
 	oscillator.start();
-	await Algorithms.get(algorithm)(array, (a, b) => {
-		playNote(a + 100, oscillator);
+	await data[0](array, (a, b) => {
+		playNote(a + 300, oscillator);
 		return a >= b;
 	}, 0, array.length);
 	oscillator.stop();
