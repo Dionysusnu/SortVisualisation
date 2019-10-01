@@ -4,7 +4,7 @@ async function SelectionSort(array, comparison) {
 		let element = array[i + 1];
 		let chosen = i + 1;
 		for (let comparing = i + 2; comparing < array.length; comparing++) {
-			if (await comparison(element, array[comparing])) {
+			if (!await comparison(array[comparing], element)) {
 				chosen = comparing;
 				element = array[chosen];
 			}
