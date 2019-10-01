@@ -41,9 +41,11 @@ class CustomArray extends Array {
 
 import { QuickSort } from './sorts/QuickSort.js';
 import { InsertionSort } from './sorts/InsertionSort.js';
+import { MergeSort } from './sorts/MergeSort.js';
 const Algorithms = new Map([
 	['QuickSort', QuickSort],
 	['InsertionSort', InsertionSort],
+	['MergeSort', MergeSort],
 ]);
 
 const select = document.getElementById('ALGORITHM_SELECT');
