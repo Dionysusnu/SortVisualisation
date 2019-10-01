@@ -26,7 +26,6 @@ function redraw(array) {
 class CustomArray extends Array {
 	splice() {
 		const args = Array.prototype.slice.call(arguments);
-		console.log(`start: ${args[0]} num: ${args[1]} firstReplace: ${args[2]}`);
 		super.splice(args[0], args[1], ...args.slice(2));
 		redraw(this);
 	}
