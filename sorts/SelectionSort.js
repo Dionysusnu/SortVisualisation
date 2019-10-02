@@ -9,7 +9,10 @@ async function SelectionSort(array, comparison) {
 				element = array[chosen];
 			}
 		}
-		array.swap(i, chosen);
+		// console.log(`swapping ${i} with ${chosen}`);
+		if (await comparison(array[i], array[chosen])) {
+			array.swap(i, chosen);
+		}
 	}
 }
 
