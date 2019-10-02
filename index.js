@@ -71,6 +71,7 @@ const Algorithms = new Map([
 	['HeapSort', [HeapSort, 400]],
 ]);
 
+const elementSelect = document.getElementById('ELEMENT_SELECT');
 const select = document.getElementById('ALGORITHM_SELECT');
 for (const [name] of Algorithms) {
 	const x = document.createElement('OPTION');
@@ -84,7 +85,8 @@ async function play() {
 	const algorithm = select.options[select.selectedIndex].value;
 	const data = Algorithms.get(algorithm);
 	const array = new CustomArray();
-	for (let i = 0; i < data[1]; i++) {
+	const elementCount = parseInt(elementSelect.value) || data[1];
+	for (let i = 0; i < elementCount; i++) {
 		array.push(Math.round(Math.random() * canvas.height));
 	}
 	/*
