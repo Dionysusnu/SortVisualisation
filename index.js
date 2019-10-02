@@ -3,12 +3,16 @@ const canvas = document.getElementById('MAIN_CANVAS');
 canvas.width = window.innerWidth * 0.9;
 canvas.height = window.innerHeight * 0.9;
 const context = canvas.getContext('2d');
-const comparisons = document.getElementById('COMPARISONS_COUNT');
-const accesses = document.getElementById('ACCESSES_COUNT');
+const comparisons = document.getElementById('COMPARISON_COUNT');
+const accesses = document.getElementById('ACCESS_COUNT');
 
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 function playNote(frequency, oscillator) {
-	oscillator.frequency.value = frequency;
+	try {
+		oscillator.frequency.value = frequency;
+	} catch (error) {
+		console.error(`frequency=${frequency} error=${error}`);
+	}
 }
 
 function drawBar(i, height, width) {
@@ -24,6 +28,11 @@ function redraw(array) {
 }
 
 class CustomArray extends Array {
+	constructor() {
+		super(...arguments);
+		this.accesses = 0;
+		this.comparisons = 0;
+	}
 	async splice() {
 		const args = Array.prototype.slice.call(arguments);
 		for (let i = 2; i < args.length; i++) {
