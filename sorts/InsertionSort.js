@@ -11,7 +11,7 @@ async function InsertionSort(array, comparison) {
 			} else if (!await comparison(array[comparing], element)) {
 				sorted = true;
 			} else {
-				array.swap(comparing, comparing + 1);
+				await array.swap(comparing, comparing + 1);
 			}
 		}
 	}

@@ -33,7 +33,7 @@ async function QuickSort(array, comparison, starti, numElements) {
 		const partitioni = Math.round(starti + Math.random() * (numElements - 1));
 		const partition = array[partitioni];
 		// Put partition at the end
-		array.swap(partitioni, starti + numElements - 1);
+		await array.swap(partitioni, starti + numElements - 1);
 		// console.log(`sorting ${starti}-${starti + numElements} partition=${partition}`);
 		let greaterStart = starti;
 		let unsortedStart = starti;
@@ -46,7 +46,7 @@ async function QuickSort(array, comparison, starti, numElements) {
 				// console.log(`greaterStart=${greaterStart} unsortedStart=${unsortedStart}`);
 			} else {
 				// Smaller, swap element with first element of greater array
-				array.swap(i, greaterStart);
+				await array.swap(i, greaterStart);
 				greaterStart++;
 				unsortedStart++;
 				// console.log(`${element} smaller`);
@@ -55,7 +55,7 @@ async function QuickSort(array, comparison, starti, numElements) {
 		}
 		// Swap partition with first element of greater array
 		// console.log(`starti=${starti} greaterStart=${greaterStart} unsortedStart=${unsortedStart}`);
-		array.swap(greaterStart, starti + numElements - 1);
+		await array.swap(greaterStart, starti + numElements - 1);
 		// console.log(array);
 		await QuickSort(array, comparison, starti, greaterStart - starti);
 		await QuickSort(array, comparison, greaterStart + 1, unsortedStart - greaterStart);

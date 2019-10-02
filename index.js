@@ -3,6 +3,8 @@ const canvas = document.getElementById('MAIN_CANVAS');
 canvas.width = window.innerWidth * 0.9;
 canvas.height = window.innerHeight * 0.9;
 const context = canvas.getContext('2d');
+const comparisons = document.getElementById('COMPARISONS_COUNT');
+const accesses = document.getElementById('ACCESSES_COUNT');
 
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 function playNote(frequency, oscillator) {
@@ -18,18 +20,27 @@ function redraw(array) {
 	for (let i = 0; i < array.length; i++) {
 		drawBar(i, array[i], canvas.width / array.length);
 	}
+	accesses.innerHTML = array.accesses + '';
 }
 
 class CustomArray extends Array {
-	splice() {
+	async splice() {
 		const args = Array.prototype.slice.call(arguments);
+		for (let i = 2; i < args.length; i++) {
+			// For every element replaced, count an array access and sleep 2ms
+			this.accesses++;
+			await sleep(2);
+		}
 		super.splice(args[0], args[1], ...args.slice(2));
 		redraw(this);
 	}
 
-	swap(a, b) {
+	async swap(a, b) {
 		const obja = this[a];
 		const objb = this[b];
+		// For every swap, count an array access and sleep 2ms
+		this.accesses++;
+		await sleep(2);
 		this[a] = objb;
 		this[b] = obja;
 		redraw(this);
@@ -80,6 +91,9 @@ async function play() {
 	oscillator.start();
 	await data[0](array, async (a, b) => {
 		playNote(a + 300, oscillator);
+		// For every comparison, count one and sleep 1ms
+		array.comparisons++;
+		comparisons.innerHTML = array.comparisons + '';
 		await sleep(1);
 		return a >= b;
 	}, 0, array.length);

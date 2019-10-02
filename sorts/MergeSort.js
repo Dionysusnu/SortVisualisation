@@ -11,15 +11,15 @@ async function MergeSort(array, comparison, starti, numElements) {
 			const Lelement = Larray.shift();
 			const Relement = Rarray.shift();
 			if (await comparison(Lelement, Relement)) {
-				array.splice(insertPos, 1, Relement);
+				await array.splice(insertPos, 1, Relement);
 				Larray.unshift(Lelement);
 			} else {
-				array.splice(insertPos, 1, Lelement);
+				await array.splice(insertPos, 1, Lelement);
 				Rarray.unshift(Relement);
 			}
 			insertPos++;
 		}
-		array.splice(insertPos, Larray.length + Rarray.length, ...Larray, ...Rarray);
+		await array.splice(insertPos, Larray.length + Rarray.length, ...Larray, ...Rarray);
 	}
 }
 

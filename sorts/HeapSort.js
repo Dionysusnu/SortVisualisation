@@ -22,7 +22,7 @@ async function siftDown(i, array, comparison, heapLength) {
 	}
 	if (swap !== root) {
 		// console.log(`swap=${swap} root=${root}`);
-		array.swap(root, swap);
+		await array.swap(root, swap);
 		await siftDown(swap, array, comparison, heapLength);
 	}
 }
@@ -41,7 +41,7 @@ async function HeapSort(array, comparison) {
 	// console.log(`heapified array=${array}`);
 	let sorted = 0;
 	while (sorted !== array.length) {
-		array.swap(0, array.length - sorted - 1);
+		await array.swap(0, array.length - sorted - 1);
 		sorted++;
 		// console.log(`sorted=${sorted} array=${array}`);
 		await siftDown(0, array, comparison, array.length - sorted);

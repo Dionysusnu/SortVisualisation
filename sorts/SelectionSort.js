@@ -11,7 +11,7 @@ async function SelectionSort(array, comparison) {
 		}
 		// console.log(`swapping ${i} with ${chosen}`);
 		if (await comparison(array[i], array[chosen])) {
-			array.swap(i, chosen);
+			await array.swap(i, chosen);
 		}
 	}
 }
