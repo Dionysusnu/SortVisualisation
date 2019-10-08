@@ -62,6 +62,7 @@ import { MergeSort } from './sorts/MergeSort.js';
 import { BubbleSort } from './sorts/BubbleSort.js';
 import { SelectionSort } from './sorts/SelectionSort.js';
 import { HeapSort } from './sorts/HeapSort.js';
+import { CycleSort } from './sorts/CycleSort.js';
 const Algorithms = new Map([
 	['QuickSort', [QuickSort, 500]],
 	['InsertionSort', [InsertionSort, 200]],
@@ -69,6 +70,7 @@ const Algorithms = new Map([
 	['BubbleSort', [BubbleSort, 100]],
 	['SelectionSort', [SelectionSort, 100]],
 	['HeapSort', [HeapSort, 400]],
+        ['WIP: CycleSort', [CycleSort, 50]],
 ]);
 
 const elementSelect = document.getElementById('ELEMENT_SELECT');
