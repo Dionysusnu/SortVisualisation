@@ -1,5 +1,5 @@
 async function SortElementI(array, comparison, iToSort) {
-	if (array.isSorted(comparison)) {
+	if (await array.isSorted(comparison)) {
 		return
 	}
 	const element = array[iToSort];
