@@ -56,7 +56,7 @@ class CustomArray extends Array {
 		redraw(this);
 	}
 
-        isSorted(comparison) {
+        async isSorted(comparison) {
     for (let i = 0; i < this.length - 1; i++) {
     	if (!await comparison(this[i + 1], this[i])) {
     		return false;
