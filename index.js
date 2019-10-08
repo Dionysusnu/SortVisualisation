@@ -33,6 +33,7 @@ class CustomArray extends Array {
 		this.accesses = 0;
 		this.comparisons = 0;
 	}
+
 	async splice() {
 		const args = Array.prototype.slice.call(arguments);
 		for (let i = 2; i < args.length; i++) {
@@ -54,6 +55,15 @@ class CustomArray extends Array {
 		this[b] = obja;
 		redraw(this);
 	}
+
+        isSorted(comparison) {
+    for (let i = 0; i < this.length - 1; i++) {
+    	if (!await comparison(this[i + 1], this[i])) {
+    		return false;
+    	}
+    }
+    return true;
+}
 }
 
 import { QuickSort } from './sorts/QuickSort.js';
