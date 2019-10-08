@@ -1,5 +1,5 @@
-async function SortElementI(array, iToSort) {
-	if (array.isSorted()) {
+async function SortElementI(array, comparison, iToSort) {
+	if (array.isSorted(comparison)) {
 		return
 	}
 	const element = array[iToSort];
@@ -10,12 +10,12 @@ async function SortElementI(array, iToSort) {
 		}
 	}
 	await array.swap(iToSort, before);
-	await SortElementI(array, iToSort);
+	await SortElementI(array, comparison, iToSort);
 }
 
 async function CycleSort(array, comparison) {
 	// comparison true=>element 1 must come AFTER element 2
-	await SortElementI(array, 0);
+	await SortElementI(array, comparison, 0);
 }
 
 export { CycleSort };
