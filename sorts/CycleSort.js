@@ -1,6 +1,6 @@
 async function SortElementI(array, comparison, iToSort) {
 	if (await array.isSorted(comparison)) {
-		return
+		return;
 	}
 	const element = array[iToSort];
 	let before = 0;
@@ -9,7 +9,7 @@ async function SortElementI(array, comparison, iToSort) {
 			before += 1;
 		}
 	}
-console.log(`swapping ${iToSort} and ${before}`)
+	console.log(`swapping ${iToSort} and ${before}`);
 	await array.swap(iToSort, before);
 	await SortElementI(array, comparison, iToSort);
 }

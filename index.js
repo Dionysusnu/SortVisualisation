@@ -56,14 +56,14 @@ class CustomArray extends Array {
 		redraw(this);
 	}
 
-        async isSorted(comparison) {
-    for (let i = 0; i < this.length - 1; i++) {
-    	if (!await comparison(this[i + 1], this[i])) {
-    		return false;
-    	}
-    }
-    return true;
-}
+	async isSorted(comparison) {
+		for (let i = 0; i < this.length - 1; i++) {
+			if (!await comparison(this[i + 1], this[i])) {
+				return false;
+			}
+		}
+		return true;
+	}
 }
 
 import { QuickSort } from './sorts/QuickSort.js';
@@ -80,7 +80,7 @@ const Algorithms = new Map([
 	['BubbleSort', [BubbleSort, 100]],
 	['SelectionSort', [SelectionSort, 100]],
 	['HeapSort', [HeapSort, 400]],
-        ['WIP: CycleSort', [CycleSort, 50]],
+	['WIP: CycleSort', [CycleSort, 50]],
 ]);
 
 const elementSelect = document.getElementById('ELEMENT_SELECT');

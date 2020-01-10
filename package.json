@@ -1,0 +1,22 @@
+{
+  "name": "sortvisualisation",
+  "version": "1.0.0",
+  "description": "Watch [here](https://dionysusnu.github.io/SortVisualisation/)",
+  "main": "index.js",
+  "devDependencies": {
+    "httpserver": "^0.3.0"
+  },
+  "scripts": {
+    "test": "httpserver"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dionysusnu/SortVisualisation.git"
+  },
+  "author": "Dionysusnu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dionysusnu/SortVisualisation/issues"
+  },
+  "homepage": "https://github.com/Dionysusnu/SortVisualisation#readme"
+}
