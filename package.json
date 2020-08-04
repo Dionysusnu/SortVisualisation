@@ -2,7 +2,7 @@
   "name": "sortvisualisation",
   "version": "1.0.0",
   "description": "Watch [here](https://dionysusnu.github.io/SortVisualisation/)",
-  "main": "site/index.js",
+  "main": "docs/index.html",
   "scripts": {
     "test": "npm run build && npm run start",
     "start": "npx httpserver",
