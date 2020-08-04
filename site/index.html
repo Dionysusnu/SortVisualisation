@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			canvas {
+				border: 1px solid #d3d3d3;
+				background-color: #f1f1f1;
+			}
+		</style>
+		<script src="index.js"></script>
+	</head>
+
+	<body onload="loaded()">
+		<select id="ALGORITHM_SELECT"></select>
+		<select id="FILL_SELECT"></select>
+		<input id="ELEMENT_SELECT" type="text"></input>
+		<button id="START_BUTTON">start</button>
+		<table>
+			<tr>
+				<th>Reads</th>
+				<th>Writes</th>
+				<th>Comparisons</th>
+			</tr>
+			<tr>
+				<td id="READ_COUNT"></td>
+				<td id="WRITE_COUNT"></td>
+				<td id="COMPARISON_COUNT"></td>
+		</table>
+		<canvas id="MAIN_CANVAS">If nothing happens, your browser does not support HTML5</canvas>
+	</body>
+
+</html>
