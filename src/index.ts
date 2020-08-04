@@ -54,6 +54,9 @@ function loaded() {
 		const algorithm = algorithmSelect.getChoice();
 		const elementCount = parseInt(elementSelect.value) || algorithm[1];
 		const state = new State(oscillator);
+		const canvas = document.getElementById("MAIN_CANVAS") as HTMLCanvasElement;
+		canvas.width = 0.9 * window.innerWidth;
+		canvas.height = 0.9 * window.innerHeight;
 		const chosenFill = inputSelect.getChoice();
 		await chosenFill(state, elementCount);
 		await algorithm[0](state);
